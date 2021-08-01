@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import FormSignin from "../forms/FormSignin";
+import LoginBtn from "../../assets/LoginBtn.svg";
 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -45,36 +45,52 @@ const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
   return (
     <div>
       <Modal
-        size="sm"
+        size="md"
         show={showSignin}
         onHide={() => setShowSignin(false)}
+        centered
         aria-labelledby="example-modal-sizes-title-sm"
       >
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Enter email"
-              onChange={handleChange}
-            />
-          </Form.Group>
+        <div className="p-5">
+          <h2 className="fw-bold color-dominant mb-5">Login</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                onChange={handleChange}
+                className="form-dominant color-dominant"
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                name="password"
+                type="password"
+                placeholder="Password"
+                onChange={handleChange}
+                className="form-dominant color-dominant"
+              />
+            </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Button
+              className="button-dominant mt-3 py-2 px-3 fullwidth fw-600"
+              type="submit"
+            >
+              Submit
+            </Button>
+            <p className="text-center mt-4">
+              Don't have an account ? Click{" "}
+              <span
+                className="fw-bold cursor-pointer"
+                onClick={() => console.log("OK")}
+              >
+                Here
+              </span>
+            </p>
+          </Form>
+        </div>
       </Modal>
     </div>
   );

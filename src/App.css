@@ -1,3 +1,26 @@
 .color-dominant {
   color: #613d2b;
 }
+
+.form-dominant {
+  border: 2px solid #613d2b !important;
+  background: rgba(97, 61, 43, 0.25) !important;
+}
+
+.button-dominant {
+  background: #613d2b;
+  color: white;
+  border: #613d2b;
+}
+.button-dominant:hover {
+  background: #613d2b !important;
+  cursor: pointer;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.fullwidth {
+  width: 100% !important;
+}
