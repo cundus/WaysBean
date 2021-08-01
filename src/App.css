@@ -7,6 +7,10 @@
   background: rgba(97, 61, 43, 0.25) !important;
 }
 
+.form-dominant:focus {
+  color: #613d2b !important;
+}
+
 .button-dominant {
   background: #613d2b;
   color: white;

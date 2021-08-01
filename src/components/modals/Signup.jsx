@@ -7,6 +7,7 @@ const Signup = ({ showSignup, setShowSignup }) => {
     name: "",
     password: "",
     email: "",
+    role_id: 2,
   });
 
   const handleChange = (e) => {
@@ -34,7 +35,7 @@ const Signup = ({ showSignup, setShowSignup }) => {
         setData({
           name: "",
           email: "",
-          role_id: "",
+          role_id: 2,
           password: "",
         });
         alert("Berhasil sign up");
@@ -47,57 +48,63 @@ const Signup = ({ showSignup, setShowSignup }) => {
   return (
     <div>
       <Modal
-        size="sm"
+        centered
         show={showSignup}
         onHide={() => setShowSignup(false)}
         aria-labelledby="example-modal-sizes-title-sm"
       >
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="FormBasicname" className="mb-3">
-            <Form.Label>name</Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              value={data.name}
-              onChange={handleChange}
-              placeholder="Enter Fullname"
-            />
-          </Form.Group>
+        <div className="p-4 px-5">
+          <h2 className="fw-bold color-dominant mb-4">Register</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="FormBasicname" className="mb-3">
+              <Form.Control
+                type="text"
+                name="name"
+                value={data.name}
+                onChange={handleChange}
+                placeholder="Enter Fullname"
+                className="form-dominant color-dominant"
+              />
+            </Form.Group>
 
-          <Form.Group controlId="FormBasicEmail" className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={data.email}
-              onChange={handleChange}
-              placeholder="Enter Email"
-            />
-          </Form.Group>
-          <Form.Group controlId="FormBasicrole" className="mb-3">
-            <Form.Label>role</Form.Label>
-            <Form.Control
-              type="number"
-              name="role"
-              value={data.role}
-              onChange={handleChange}
-              placeholder="Enter role"
-            />
-          </Form.Group>
-          <Form.Group controlId="FormBasicPassword" className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={data.password}
-              onChange={handleChange}
-              placeholder="Enter Password"
-            />
-          </Form.Group>
-          <Button className="modal-btn" type="submit">
-            Sign Up
-          </Button>
-        </Form>
+            <Form.Group controlId="FormBasicEmail" className="mb-3">
+              <Form.Control
+                type="email"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+                placeholder="Enter Email"
+                className="form-dominant color-dominant"
+              />
+            </Form.Group>
+
+            <Form.Group controlId="FormBasicPassword" className="mb-3">
+              <Form.Control
+                type="password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+                placeholder="Enter Password"
+                className="form-dominant color-dominant"
+              />
+            </Form.Group>
+            <Button
+              className="button-dominant mt-3 py-2 px-3 fullwidth fw-600"
+              type="submit"
+            >
+              Sign Up
+            </Button>
+            <p className="text-center mt-4">
+              Already have an account ? Click{" "}
+              <span
+                className="fw-bold cursor-pointer"
+                onClick={() => console.log("OK")}
+              >
+                Here
+              </span>
+            </p>
+          </Form>
+        </div>
       </Modal>
     </div>
   );
