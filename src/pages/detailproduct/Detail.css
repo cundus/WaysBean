@@ -1,0 +1,26 @@
+.detail-container {
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.left-detail {
+  margin-right: 2em;
+}
+
+.photo-detail {
+  width: 24rem;
+  height: 30rem;
+  object-fit: cover;
+}
+
+.right-detail {
+  padding: 1em;
+  width: 30rem;
+}
+
+.description-container {
+  height: 10rem;
+  margin-top: 2em;
+  word-wrap: break-word;
+}

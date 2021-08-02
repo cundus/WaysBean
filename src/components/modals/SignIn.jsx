@@ -75,7 +75,7 @@ const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
             </Form.Group>
 
             <Button
-              className="button-dominant mt-3 py-2 px-3 fullwidth fw-600"
+              className="button-dominant mt-3 py-2 px-3 fullwidth"
               type="submit"
             >
               Submit

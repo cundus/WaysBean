@@ -33,10 +33,7 @@ const UserReducer = (state, action) => {
         isLogin: false,
         user: null,
       };
-    case "ADD_TO_CART":
-      return {
-        ...state,
-      };
+
     default:
       throw new Error("unknown cases");
   }

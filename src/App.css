@@ -9,16 +9,24 @@
 
 .form-dominant:focus {
   color: #613d2b !important;
+  box-shadow: 0 0 0 0.25rem rgb(129, 99, 84) !important;
 }
 
 .button-dominant {
   background: #613d2b;
   color: white;
   border: #613d2b;
+  padding: 0.4em;
+  border-radius: 7px;
 }
 .button-dominant:hover {
   background: #613d2b !important;
   cursor: pointer;
+}
+.button-dominant:focus {
+  background: #613d2b !important;
+  border-color: rgb(117, 84, 67);
+  box-shadow: 0 0 0 0.25rem rgb(129, 99, 84) !important;
 }
 
 .cursor-pointer:hover {
@@ -27,4 +35,39 @@
 
 .fullwidth {
   width: 100% !important;
+}
+
+.form-control::placeholder {
+  color: #613d2b;
+  opacity: 1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #613d2b;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #613d2b7e;
 }

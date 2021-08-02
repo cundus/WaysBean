@@ -4,6 +4,7 @@ import AddProduct from "./pages/addproduct/AddProduct";
 import DetailProduct from "./pages/detailproduct/DetailProduct";
 import Home from "./pages/home/Home";
 import "./App.css";
+import PrivateRoute from "./components/privateroute/PrivateRoute";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={DetailProduct} />
-        <Route exact path="/add-product" component={AddProduct} />
+        <PrivateRoute exact path="/add-product" component={AddProduct} />
       </Switch>
     </Router>
   );
