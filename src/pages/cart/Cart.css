@@ -1,0 +1,44 @@
+.cartContainer {
+  padding: 2em 8em;
+}
+
+hr.solid {
+  border-top: 3px solid rgb(0, 0, 0);
+}
+
+.reviewContainer {
+  flex: 0.7;
+  margin-right: 3em;
+}
+
+.reviewLeft {
+  display: flex;
+}
+
+.thumb-cart {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 1em;
+}
+
+.qtyBox {
+  margin-top: 5px;
+  padding: 0 15px;
+  font-size: large;
+  background-color: #f6e6da;
+  border-radius: 5px;
+}
+/* .reviewRight {
+  background-color: cornflowerblue;
+} */
+.image-right {
+  text-align: right;
+}
+.trash {
+  width: 20px;
+}
+
+.proceedContainer {
+  flex: 0.3;
+}

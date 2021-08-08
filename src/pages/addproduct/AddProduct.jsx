@@ -3,45 +3,53 @@ import { Button, Form } from "react-bootstrap";
 import "./Add.css";
 import UploadIcon from "../../assets/UploadIcon.svg";
 
-import axios from "axios";
 import { API } from "../../config/api";
+import { useHistory } from "react-router-dom";
+import PopUp from "../../components/modals/PopUp";
+import { Helmet } from "react-helmet";
 
 const AddProduct = () => {
+  const history = useHistory();
   const [preview, setPreview] = React.useState(null);
   const [name, setName] = React.useState("");
   const [stock, setStock] = React.useState();
   const [price, setPrice] = React.useState();
   const [description, setDescription] = React.useState("");
+  const [showPop, setShowPop] = React.useState(false);
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
 
-      const data = {
-        name: name,
-        stock: stock,
-        price: price,
-        description: description,
-        photo: preview.name,
-      };
+      const data = new FormData();
+      data.append("name", name);
+      data.append("stock", stock);
+      data.append("price", price);
+      data.append("description", description);
+      data.append("photo", preview);
 
       const config = {
         headers: {
           "Content-type": "multipart/form-data",
         },
       };
-      const body = JSON.stringify({ ...data });
-      console.log(data);
-      await API.post("/add-product", body, config);
-
-      alert("Berhasil Tambah Data");
+      await API.post("/add-product", data, config);
+      setShowPop(true);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const closeAfterAdd = () => {
+    setShowPop(false);
+    history.push("/");
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>Add Product | WaysBean</title>
+      </Helmet>
       <div className="add-form-container">
         <div className="left-container">
           <h2 className="color-dominant fw-bold mb-3">Add Product</h2>
@@ -131,6 +139,11 @@ const AddProduct = () => {
           )}
         </div>
       </div>
+      <PopUp
+        show={showPop}
+        hide={closeAfterAdd}
+        message={"Success Add New Product"}
+      />
     </div>
   );
 };

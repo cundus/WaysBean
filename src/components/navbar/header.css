@@ -11,3 +11,23 @@
   border-radius: 50%;
   border: 1px solid rgb(231, 231, 231);
 }
+
+.cartCount {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
+  background: #f13f3f;
+  border-radius: 50%;
+}
+.cartCount > p {
+  font-size: 12px;
+
+  color: #ffffff;
+  text-align: center;
+}
+
+.dropdownCustom {
+  margin-left: -5em !important;
+}

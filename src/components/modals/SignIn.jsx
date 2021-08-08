@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
 import LoginBtn from "../../assets/LoginBtn.svg";
 
-import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { setAuthToken } from "../../config/api";
+import { API, setAuthToken } from "../../config/api";
 
-const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
+const SignIn = ({ showSignin, setShowSignin, dispatch, setShowSignup }) => {
   const history = useHistory();
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -22,24 +24,30 @@ const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = {
-      "Content-Type": "application/json",
-    };
-    await axios
-      .post("http://localhost:4000/api/v1/signin", data, config)
-      .then((res) => {
-        // console.log(res.data);
-        dispatch({
-          type: "LOGIN",
-          payload: res.data,
-        });
-        setAuthToken(res.data.token);
 
-        history.push("/");
-      })
-      .catch(() => {
-        console.log("Cannot Sign In");
+    try {
+      setIsError(false);
+      const config = {
+        "Content-Type": "application/json",
+      };
+      const res = await API.post("/signin", data, config);
+      console.log("data Login", res.data);
+      dispatch({
+        type: "LOGIN",
+        payload: res.data,
       });
+      setAuthToken(res.data.token);
+      localStorage.setItem("token", res.data.token);
+
+      history.push(res.data.role_id === 2 ? "/" : "/dashboard");
+    } catch (error) {
+      if (error) {
+        const { response } = error;
+        console.log(response.data.message);
+        setIsError(true);
+        setMessage(response.data.message);
+      }
+    }
   };
 
   return (
@@ -54,6 +62,8 @@ const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
         <div className="p-5">
           <h2 className="fw-bold color-dominant mb-5">Login</h2>
           <Form onSubmit={handleSubmit}>
+            {isError && <Alert variant="danger">{message}</Alert>}
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
                 name="email"
@@ -84,7 +94,10 @@ const SignIn = ({ showSignin, setShowSignin, dispatch }) => {
               Don't have an account ? Click{" "}
               <span
                 className="fw-bold cursor-pointer"
-                onClick={() => console.log("OK")}
+                onClick={() => {
+                  setShowSignin(false);
+                  setShowSignup(true);
+                }}
               >
                 Here
               </span>

@@ -1,0 +1,56 @@
+.title-profile {
+  color: #613d2b;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profile-pic {
+  margin-right: 1em;
+  width: 10rem;
+  height: 13rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.profile-field {
+  color: #613d2b;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-field-content {
+  font-size: 18px;
+}
+.right-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.success {
+  min-width: 7.5rem;
+  background: rgba(28, 194, 28, 0.253);
+  padding: 5px 20px;
+  color: #78a85a;
+}
+
+.wait {
+  min-width: 7.5rem;
+  background: #ff990038;
+  padding: 5px 20px;
+  color: #ff9900;
+}
+
+.cancel {
+  min-width: 7.5rem;
+  background: #e8393942;
+  padding: 5px 20px;
+  color: #e83939;
+}
+
+.status-text {
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
+}

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Alert, Button, Form, Modal } from "react-bootstrap";
 import axios from "axios";
+import { API } from "../../config/api";
 
-const Signup = ({ showSignup, setShowSignup }) => {
+const Signup = ({ showSignup, setShowSignup, setShowSignin }) => {
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageOk, setMessageOk] = useState("");
+
   const [data, setData] = useState({
     name: "",
     password: "",
     email: "",
-    role_id: 2,
+    role: 2,
   });
 
   const handleChange = (e) => {
@@ -19,30 +24,30 @@ const Signup = ({ showSignup, setShowSignup }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      setIsError(false);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const body = JSON.stringify({ ...data });
+      const res = await API.post("/signup", body, config);
 
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-
-    const body = JSON.stringify({ ...data });
-
-    await axios
-      .post("http://localhost:4000/api/v1/signup", body, config)
-      .then((res) => {
-        console.log(res);
-        setData({
-          name: "",
-          email: "",
-          role_id: 2,
-          password: "",
-        });
-        alert("Berhasil sign up");
-      })
-      .catch((error) => {
-        console.log(error);
+      console.log(res);
+      setData({
+        name: "",
+        email: "",
+        password: "",
+        role: 2,
       });
+      setMessageOk("Success Create Account, You Can Login Now");
+    } catch (error) {
+      const { response } = error;
+      console.log(response.data.message);
+      setIsError(true);
+      setMessage(response.data.message);
+    }
   };
 
   return (
@@ -56,6 +61,8 @@ const Signup = ({ showSignup, setShowSignup }) => {
         <div className="p-4 px-5">
           <h2 className="fw-bold color-dominant mb-4">Register</h2>
           <Form onSubmit={handleSubmit}>
+            {isError && <Alert variant="danger">{message}</Alert>}
+            {messageOk && <Alert variant="success">{messageOk}</Alert>}
             <Form.Group controlId="FormBasicname" className="mb-3">
               <Form.Control
                 type="text"
@@ -98,7 +105,10 @@ const Signup = ({ showSignup, setShowSignup }) => {
               Already have an account ? Click{" "}
               <span
                 className="fw-bold cursor-pointer"
-                onClick={() => console.log("OK")}
+                onClick={() => {
+                  setShowSignup(false);
+                  setShowSignin(true);
+                }}
               >
                 Here
               </span>

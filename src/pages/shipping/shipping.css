@@ -1,0 +1,63 @@
+.container-shipping {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  min-height: 100vh;
+}
+
+.form-shipping {
+  margin-right: 3em;
+  width: 27rem;
+  padding: 1em 0;
+}
+
+.product-card {
+  min-width: 20rem;
+}
+
+.productCardContainer {
+  background-color: #f6e6da;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  width: 30rem;
+  padding: 0.75em 1em;
+}
+
+.leftCard {
+  display: flex;
+}
+
+.cardImage {
+  width: 5rem;
+  height: 7rem;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.cardBody > p {
+  color: #613d2b;
+}
+.cardBody-name {
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0;
+}
+.cardBody-date {
+  font-size: 12px;
+  margin-bottom: 1em;
+}
+.cardBody-price {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 500;
+}
+.cardBody-quantity {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 500;
+}
+.cardBody-sub {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 900;
+}
